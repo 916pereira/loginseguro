@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Administração | Login Seguro</title>
+    <th:block th:replace="~{fragments/estilos :: estilos}"></th:block>
+</head>
+<body>
+    <main class="auth-container">
+        <section class="card card-wide">
+            <div th:replace="~{fragments/menu :: menu}"></div>
+
+            <span class="badge">ADMINISTRAÇÃO</span>
+            <h1>Gerenciar usuários</h1>
+            <p class="subtitle">
+                Edite os dados, os perfis e o status das contas.
+            </p>
+
+            <div class="alert success"
+                 th:if="${sucesso}" th:text="${sucesso}"></div>
+
+            <div class="alert error"
+                 th:if="${erro}" th:text="${erro}"></div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Perfil</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="usuario : ${usuarios.content}">
+                            <td th:text="${usuario.nome}"></td>
+                            <td th:text="${usuario.email}"></td>
+                            <td th:text="${usuario.role}"></td>
+                            <td th:text="${usuario.ativo ? 'Ativo' : 'Inativo'}"></td>
+                            <td>
+                                <div class="actions">
+                                    <a th:href="@{/admin/usuarios/{id}/editar(id=${usuario.id})}">
+                                        Editar
+                                    </a>
+
+                                    <form th:if="${usuario.email != emailAdministrador}"
+                                          th:action="@{/admin/usuarios/{id}/excluir(id=${usuario.id})}"
+                                          method="post">
+                                        <button class="button-danger"
+                                                type="submit">
+                                            Excluir
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr th:if="${usuarios.empty}">
+                            <td colspan="5">Nenhum usuário encontrado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <nav class="page-navigation" aria-label="Paginação">
+                <a th:if="${usuarios.hasPrevious()}"
+                   th:href="@{/admin(pagina=${usuarios.number - 1})}">
+                    Anterior
+                </a>
+
+                <span th:text="|Página ${usuarios.number + 1}|"></span>
+
+                <a th:if="${usuarios.hasNext()}"
+                   th:href="@{/admin(pagina=${usuarios.number + 1})}">
+                    Próxima
+                </a>
+            </nav>
+        </section>
+    </main>
+</body>
+</html>

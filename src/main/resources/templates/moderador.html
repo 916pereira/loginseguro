@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Moderação | Login Seguro</title>
+    <th:block th:replace="~{fragments/estilos :: estilos}"></th:block>
+</head>
+<body>
+    <main class="auth-container">
+        <section class="card card-wide">
+            <div th:replace="~{fragments/menu :: menu}"></div>
+
+            <span class="badge">MODERAÇÃO</span>
+            <h1>Usuários cadastrados</h1>
+            <p class="subtitle">
+                Consulte os usuários e seus perfis de acesso.
+            </p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Perfil</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="usuario : ${usuarios.content}">
+                            <td th:text="${usuario.nome}"></td>
+                            <td th:text="${usuario.email}"></td>
+                            <td th:text="${usuario.role}"></td>
+                            <td th:text="${usuario.ativo ? 'Ativo' : 'Inativo'}"></td>
+                        </tr>
+
+                        <tr th:if="${usuarios.empty}">
+                            <td colspan="4">Nenhum usuário encontrado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <nav class="page-navigation" aria-label="Paginação">
+                <a th:if="${usuarios.hasPrevious()}"
+                   th:href="@{/moderador(pagina=${usuarios.number - 1})}">
+                    Anterior
+                </a>
+
+                <span th:text="|Página ${usuarios.number + 1}|"></span>
+
+                <a th:if="${usuarios.hasNext()}"
+                   th:href="@{/moderador(pagina=${usuarios.number + 1})}">
+                    Próxima
+                </a>
+            </nav>
+        </section>
+    </main>
+</body>
+</html>

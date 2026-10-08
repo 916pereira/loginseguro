@@ -1,0 +1,9 @@
+spring.mongodb.uri=mongodb+srv://USUARIO:SENHA@SEU_CLUSTER.mongodb.net/?retryWrites=true&w=majority&tls=true
+spring.mongodb.database=loginseguro
+
+spring.mail.username=seuemail@gmail.com
+spring.mail.password=SENHA_DE_APP_DO_GOOGLE
+
+app.mail.from=seuemail@gmail.com
+app.base-url=http://localhost:8080
+app.theme=escuro
