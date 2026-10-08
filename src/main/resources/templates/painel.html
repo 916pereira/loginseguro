@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Painel | Login Seguro</title>
+    <th:block th:replace="~{fragments/estilos :: estilos}"></th:block>
+</head>
+<body>
+    <main class="auth-container">
+        <section class="card">
+            <span class="badge">LOGIN SEGURO</span>
+            <h1>Olá, <span th:text="${nome}"></span>!</h1>
+            <p class="subtitle">Você está conectado à sua conta.</p>
+
+            <label>E-mail</label>
+            <p th:text="${email}"></p>
+
+            <label>Perfil de acesso</label>
+            <p th:text="${role}"></p>
+
+            <div th:replace="~{fragments/menu :: menu}"></div>
+        </section>
+    </main>
+</body>
+</html>

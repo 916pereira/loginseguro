@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Criar conta | Login Seguro</title>
+    <th:block th:replace="~{fragments/estilos :: estilos}"></th:block>
+</head>
+<body>
+    <main class="auth-container">
+        <section class="card">
+            <span class="badge">LOGIN SEGURO</span>
+            <h1>Crie sua conta</h1>
+            <p class="subtitle">Preencha seus dados para começar.</p>
+
+            <form th:action="@{/cadastro}"
+                  th:object="${cadastro}"
+                  method="post">
+
+                <div class="alert error" th:if="${#fields.hasAnyErrors()}">
+                    <ul>
+                        <li th:each="erro : ${#fields.allErrors()}"
+                            th:text="${erro}"></li>
+                    </ul>
+                </div>
+
+                <label for="nome">Nome completo</label>
+                <input id="nome" type="text" th:field="*{nome}"
+                       autocomplete="name" minlength="3" maxlength="100"
+                       placeholder="Seu nome completo" required>
+
+                <label for="email">E-mail</label>
+                <input id="email" type="email" th:field="*{email}"
+                       autocomplete="username" maxlength="254"
+                       placeholder="seu@email.com" required>
+
+                <label for="senha">Senha</label>
+                <input id="senha" name="senha" type="password"
+                       autocomplete="new-password" minlength="8"
+                       maxlength="64" aria-describedby="senha-ajuda"
+                       placeholder="Crie uma senha" required>
+
+                <small id="senha-ajuda">
+                    Use de 8 a 64 caracteres, com letra maiúscula,
+                    minúscula e número.
+                </small>
+
+                <label for="confirmarSenha">Confirmar senha</label>
+                <input id="confirmarSenha" name="confirmarSenha"
+                       type="password" autocomplete="new-password"
+                       minlength="8" maxlength="64"
+                       placeholder="Repita sua senha" required>
+
+                <div class="checkbox-label">
+                    <input id="aceitouTermos" type="checkbox"
+                           th:field="*{aceitouTermos}" required>
+
+                    <label for="aceitouTermos" style="margin: 0;">
+                        Aceito os
+                        <a th:href="@{/termos}">Termos de Uso</a>
+                        e declaro que li a
+                        <a th:href="@{/privacidade}">Política de Privacidade</a>.
+                    </label>
+                </div>
+
+                <button type="submit">Criar conta</button>
+            </form>
+
+            <p class="footer-text">
+                Já tem uma conta?
+                <a th:href="@{/login}">Entrar</a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>

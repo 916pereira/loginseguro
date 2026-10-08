@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Política de Privacidade | Login Seguro</title>
+    <th:block th:replace="~{fragments/estilos :: estilos}"></th:block>
+</head>
+<body>
+    <main class="auth-container">
+        <article class="card card-wide">
+            <span class="badge">VERSÃO 1.0 — 08/10/2026</span>
+            <h1>Política de Privacidade</h1>
+            <p class="subtitle">
+                Saiba como seus dados são utilizados neste projeto acadêmico.
+            </p>
+
+            <h2>1. Responsável pelo projeto</h2>
+            <p>
+                Este ambiente acadêmico é desenvolvido por
+                João Pedro Pereira Simões. Solicitações relacionadas
+                aos dados devem ser encaminhadas ao responsável pelo
+                mesmo canal utilizado para disponibilizar a demonstração.
+            </p>
+
+            <h2>2. Dados armazenados</h2>
+            <p>
+                O sistema armazena nome, e-mail, hash da senha, perfil
+                de acesso, status da conta e data de criação.
+                Também registra a data do aceite, a versão dos Termos
+                de Uso e a versão desta Política de Privacidade.
+            </p>
+            <p>
+                As sessões armazenam identificador, informações de
+                autenticação e dados técnicos necessários para manter
+                o acesso. A senha original não é armazenada.
+            </p>
+
+            <h2>3. Finalidades</h2>
+            <p>
+                Os dados são utilizados para criar e identificar contas,
+                verificar credenciais, controlar permissões, manter sessões
+                e permitir a administração do ambiente de demonstração.
+                Não são utilizados para publicidade.
+            </p>
+
+            <h2>4. Armazenamento e acesso</h2>
+            <p>
+                Os dados são armazenados no MongoDB Atlas, serviço em nuvem
+                fornecido pela MongoDB. O cluster deste projeto foi configurado
+                na região de São Paulo. O provedor pode tratar dados técnicos
+                conforme suas próprias condições de serviço.
+            </p>
+            <p>
+                Administradores e moderadores podem consultar nome, e-mail,
+                perfil e status das contas. Apenas administradores podem
+                modificar ou excluir usuários. O responsável pelo banco
+                também possui acesso técnico aos dados armazenados.
+            </p>
+
+            <h2>5. Senhas e proteção</h2>
+            <p>
+                As senhas são protegidas com hash BCrypt.
+                O sistema utiliza controle de acesso e proteção dos
+                formulários contra requisições indevidas.
+                A conexão com o Atlas utiliza TLS.
+            </p>
+
+            <h2>6. Cookies de sessão</h2>
+            <p>
+                Um cookie necessário ao funcionamento identifica a sessão
+                no navegador. Ele não é usado para publicidade ou rastreamento
+                entre sites. A sessão expira após 30 minutos sem atividade
+                ou é encerrada ao sair da conta.
+            </p>
+
+            <h2>7. Conservação e exclusão</h2>
+            <p>
+                Os dados de cadastro permanecem enquanto a conta existir
+                no ambiente acadêmico. Podem ser excluídos pelo administrador
+                ou no encerramento do projeto. Registros técnicos e cópias
+                eventualmente mantidos pelo provedor seguem suas condições
+                de conservação.
+            </p>
+
+            <h2>8. Solicitações sobre os dados</h2>
+            <p>
+                Para solicitar informações sobre sua conta, correção ou
+                exclusão de dados, entre em contato com o responsável.
+                Poderá ser necessária uma verificação de identidade
+                para proteger a conta contra solicitações de terceiros.
+            </p>
+
+            <h2>9. Dados de demonstração</h2>
+            <p>
+                Prefira dados fictícios durante os testes.
+                Não informe documentos, dados financeiros, informações
+                de saúde ou outros dados sensíveis neste sistema.
+            </p>
+
+            <p class="footer-text">
+                <a th:href="@{/termos}">Termos de Uso</a>
+                ·
+                <a th:href="@{/cadastro}">Voltar ao cadastro</a>
+                ·
+                <a th:href="@{/login}">Entrar</a>
+            </p>
+        </article>
+    </main>
+</body>
+</html>

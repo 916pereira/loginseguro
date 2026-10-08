@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar usuário | Login Seguro</title>
+    <th:block th:replace="~{fragments/estilos :: estilos}"></th:block>
+</head>
+<body>
+    <main class="auth-container">
+        <section class="card">
+            <div th:replace="~{fragments/menu :: menu}"></div>
+
+            <span class="badge">ADMINISTRAÇÃO</span>
+            <h1>Editar usuário</h1>
+            <p class="subtitle">
+                Atualize os dados e as permissões da conta.
+            </p>
+
+            <form th:action="@{/admin/usuarios/{id}/editar(id=${usuarioId})}"
+                  th:object="${edicao}" method="post">
+
+                <div class="alert error" th:if="${#fields.hasAnyErrors()}">
+                    <ul>
+                        <li th:each="erro : ${#fields.allErrors()}"
+                            th:text="${erro}"></li>
+                    </ul>
+                </div>
+
+                <label for="nome">Nome completo</label>
+                <input id="nome" type="text" th:field="*{nome}"
+                       minlength="3" maxlength="100" required>
+
+                <label for="email">E-mail</label>
+                <input id="email" type="email" th:field="*{email}"
+                       maxlength="254" required>
+
+                <label for="role">Perfil</label>
+                <select id="role" th:field="*{role}" required>
+                    <option th:each="perfil : ${roles}"
+                            th:value="${perfil}"
+                            th:text="${perfil}"></option>
+                </select>
+
+                <label class="checkbox-label" for="ativo">
+                    <input id="ativo" type="checkbox" th:field="*{ativo}">
+                    Conta ativa
+                </label>
+
+                <button type="submit">Salvar alterações</button>
+            </form>
+
+            <p class="footer-text">
+                <a th:href="@{/admin}">Cancelar e voltar</a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>

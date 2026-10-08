@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+    <nav th:fragment="menu" class="shared-menu" aria-label="Menu principal">
+        <a class="menu-link" th:href="@{/painel}">Meu painel</a>
+
+        <a class="menu-link"
+           sec:authorize="hasAnyRole('MODERADOR', 'ADMINISTRADOR')"
+           th:href="@{/moderador}">
+            Consultar usuários
+        </a>
+
+        <a class="menu-link"
+           sec:authorize="hasRole('ADMINISTRADOR')"
+           th:href="@{/admin}">
+            Gerenciar usuários
+        </a>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="menu-logout">Sair</button>
+        </form>
+    </nav>
+</body>
+</html>
