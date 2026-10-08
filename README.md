@@ -290,7 +290,7 @@ Os testes de contexto podem exigir acesso ao Atlas e a configuração local pree
 Após gerar o pacote:
 
 ```powershell
-java -jar .\target\loginseguro-0.0.1-SNAPSHOT.jar
+java -jar .\target\loginseguro-1.0.0.jar
 ```
 
 ### Cenários verificados manualmente
