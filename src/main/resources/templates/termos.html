@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Termos de Uso | Login Seguro</title>
+    <th:block th:replace="~{fragments/estilos :: estilos}"></th:block>
+</head>
+<body>
+    <main class="auth-container">
+        <article class="card card-wide">
+            <span class="badge">VERSÃO 1.0 — 08/10/2026</span>
+            <h1>Termos de Uso</h1>
+            <p class="subtitle">
+                Leia as condições de utilização do Login Seguro.
+            </p>
+
+            <h2>1. Finalidade do sistema</h2>
+            <p>
+                O Login Seguro é um projeto acadêmico destinado a demonstrar
+                cadastro, autenticação e controle de acesso de usuários.
+                Utilize dados de teste e não cadastre informações sensíveis.
+            </p>
+
+            <h2>2. Cadastro e conta</h2>
+            <p>
+                Para criar uma conta, informe nome, e-mail e senha que atendam
+                às regras apresentadas. O cadastro público atribui o perfil
+                de usuário. Outros perfis são concedidos pelo administrador.
+            </p>
+
+            <h2>3. Responsabilidade pelo acesso</h2>
+            <p>
+                Mantenha sua senha em sigilo e encerre a sessão ao utilizar
+                computadores compartilhados. Não utilize a senha de outros
+                serviços neste ambiente de demonstração.
+            </p>
+
+            <h2>4. Uso permitido</h2>
+            <p>
+                Utilize apenas as funcionalidades autorizadas para seu perfil.
+                Não tente acessar contas de terceiros, contornar as permissões,
+                inserir conteúdo malicioso ou prejudicar o funcionamento
+                do sistema.
+            </p>
+
+            <h2>5. Administração das contas</h2>
+            <p>
+                Administradores podem consultar, editar, desativar e excluir
+                contas para gerenciar o ambiente acadêmico. Moderadores podem
+                consultar a listagem de usuários, sem realizar alterações.
+            </p>
+
+            <h2>6. Disponibilidade</h2>
+            <p>
+                O sistema pode ser interrompido para manutenção, testes ou
+                encerramento do projeto. Não há garantia de disponibilidade
+                contínua nem de conservação permanente dos dados de teste.
+            </p>
+
+            <h2>7. Privacidade</h2>
+            <p>
+                A Política de Privacidade descreve quais dados são tratados,
+                suas finalidades e o armazenamento utilizado.
+                A declaração de leitura da política é registrada junto
+                ao aceite destes termos.
+            </p>
+
+            <h2>8. Versão dos termos</h2>
+            <p>
+                O cadastro registra a data e a versão aceita.
+                Atualizações futuras deverão ser identificadas por uma
+                nova versão e apresentadas aos usuários afetados.
+            </p>
+
+            <p class="footer-text">
+                <a th:href="@{/privacidade}">Política de Privacidade</a>
+                ·
+                <a th:href="@{/cadastro}">Voltar ao cadastro</a>
+                ·
+                <a th:href="@{/login}">Entrar</a>
+            </p>
+        </article>
+    </main>
+</body>
+</html>
